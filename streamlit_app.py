@@ -22,8 +22,9 @@ pd_df = my_dataframe.to_pandas()
 image_name = pd_df.loc[pd_df['COLOR_OR_STYLE'] == selected_style, 'FILE_NAME'].iloc[0]
 price = pd_df.loc[pd_df['COLOR_OR_STYLE'] == selected_style, 'PRICE'].iloc[0]
 image=session.file.get_stream("@sweatsuits/"+image_name , decompress=False).read()
-st.image(image)
-st.write("Our Warm,Comfortable, "+ selected_style +" sweatsuit!")
+product_caption = "Our Warm,Comfortable, "+ selected_style +" sweatsuit!"
+st.image(image, width=400, caption=product_caption)
+#st.write("Our Warm,Comfortable, "+ selected_style +" sweatsuit!")
 st.write("Price: "+str(price))
 sizes_avail = pd_df.loc[pd_df['COLOR_OR_STYLE'] == selected_style, 'SIZE_LIST'].iloc[0]
 st.write("Sizes Available: "+sizes_avail)
